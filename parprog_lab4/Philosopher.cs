@@ -15,7 +15,7 @@ public class Philosopher
         this.table = table;
         this.rightForkId = id;
         this.leftForkId = (id + 1) % 5;
-        thread = new Thread(Run);
+        this.thread = new Thread(Run);
     }
 
     public void Start()
@@ -29,18 +29,20 @@ public class Philosopher
         {
             Console.WriteLine($"Філософ {id} думає {i + 1} разів");
 
-            if (id == 0)
+            if (id % 2 == 0) 
             {
                 table.GetFork(leftForkId);
                 table.GetFork(rightForkId);
             }
-            else
+            else 
             {
                 table.GetFork(rightForkId);
                 table.GetFork(leftForkId);
             }
 
             Console.WriteLine($"Філософ {id} їсть {i + 1} разів");
+
+            Thread.Sleep(100); 
 
             table.PutFork(leftForkId);
             table.PutFork(rightForkId);

@@ -8,7 +8,7 @@ public class Fork
     public Fork(int id)
     {
         this.id = id;
-        semaphore = new SemaphoreSlim(1, 1);
+        this.semaphore = new SemaphoreSlim(1, 1);
     }
 
     public void PickUp()
