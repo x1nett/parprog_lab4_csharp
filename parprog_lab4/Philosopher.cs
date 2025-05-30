@@ -28,24 +28,27 @@ public class Philosopher
         for (int i = 0; i < 10; i++)
         {
             Console.WriteLine($"Філософ {id} думає {i + 1} разів");
-
-            if (id % 2 == 0) 
-            {
-                table.GetFork(leftForkId);
-                table.GetFork(rightForkId);
-            }
-            else 
-            {
-                table.GetFork(rightForkId);
-                table.GetFork(leftForkId);
-            }
+            if (id % 2 == 0)
+        {
+            table.GetFork(leftForkId);
+            table.GetFork(rightForkId);
 
             Console.WriteLine($"Філософ {id} їсть {i + 1} разів");
-
-            Thread.Sleep(100); 
+            Thread.Sleep(100);
 
             table.PutFork(leftForkId);
             table.PutFork(rightForkId);
+        }
+            else
+        {
+            table.GetFork(rightForkId);
+            table.GetFork(leftForkId);
+
+            Console.WriteLine($"Філософ {id} їсть {i + 1} разів");
+            Thread.Sleep(100);
+
+            table.PutFork(rightForkId);
+            table.PutFork(leftForkId);
         }
     }
 }
