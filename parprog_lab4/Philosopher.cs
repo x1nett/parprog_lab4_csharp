@@ -26,7 +26,7 @@ public class Philosopher
     private void Run()
     {
         for (int i = 0; i < 10; i++)
-        {
+        
             Console.WriteLine($"Філософ {id} думає {i + 1} разів");
             if (id % 2 == 0)
         {
